@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { Globe2 } from 'lucide-react';
 
 /**
@@ -7,8 +8,8 @@ import { Globe2 } from 'lucide-react';
 export default function Logo({ variant = 'light', className = '' }) {
   const isDark = variant === 'dark';
   return (
-    <a
-      href="#top"
+    <Link
+      href="/"
       className={`group inline-flex items-center gap-2.5 ${className}`}
       aria-label="BRIP360 home"
     >
@@ -33,6 +34,7 @@ export default function Logo({ variant = 'light', className = '' }) {
           Recovery &amp; Insolvency
         </span>
       </span>
-    </a>
+    </Link>
   );
 }
+

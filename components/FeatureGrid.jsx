@@ -123,7 +123,7 @@ export default function FeatureGrid() {
               </ul>
 
               <Link
-                href="#ai"
+                href="/tools"
                 className="btn-primary relative mt-7 w-full"
               >
                 See BRIP AI in Action
@@ -139,7 +139,7 @@ export default function FeatureGrid() {
               title="Models & Templates Library"
               bullets={libraryBullets}
               cta="Explore Library"
-              ctaHref="#library"
+              ctaHref="/tools"
             />
           </Reveal>
 
@@ -150,7 +150,7 @@ export default function FeatureGrid() {
               title="Industry Intelligence"
               bullets={intelligenceBullets}
               cta="View Insights"
-              ctaHref="#insights"
+              ctaHref="/knowledge"
             />
           </Reveal>
         </div>

@@ -13,7 +13,7 @@ export default function ActionCards() {
           title="What would you like to do?"
           subtitle="Jump straight into the task at hand — every tool feeds directly into your cases, models and reports."
           linkLabel="View All Tools"
-          linkHref="#all-tools"
+          linkHref="/tools"
         />
 
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -22,7 +22,7 @@ export default function ActionCards() {
             return (
               <Reveal key={card.title} delay={Math.min(i * 0.05, 0.3)} y={20}>
                 <Link
-                  href="#tool"
+                  href="/tools"
                   className="group flex h-full flex-col rounded-2xl border border-navy/10 bg-white p-5 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:border-navy/20 hover:shadow-card sm:p-6"
                 >
                   <div className="flex items-start justify-between">

@@ -11,7 +11,7 @@ export default function AudienceSection() {
           title="Who BRIP360 Serves"
           subtitle="A shared workspace for every professional and institution involved in business recovery, restructuring and insolvency across Nigeria."
           linkLabel="View All Members & Partners"
-          linkHref="#members"
+          linkHref="/solutions"
         />
 
         <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 lg:grid-cols-5">

@@ -38,10 +38,9 @@ function Skyline() {
 export default function FooterCTA() {
   return (
     <section
-      id="pricing"
+      id="get-started"
       className="relative overflow-hidden bg-navy py-20 lg:py-28"
     >
-      {/* Background gradient + glow */}
       <div
         aria-hidden
         className="absolute inset-0 bg-gradient-to-b from-navy-900 to-navy-950"
@@ -63,12 +62,15 @@ export default function FooterCTA() {
           </p>
 
           <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <Link href="#create" className="btn-primary w-full px-6 py-3.5 text-base sm:w-auto">
+            <Link
+              href="/pricing"
+              className="btn-primary w-full px-6 py-3.5 text-base sm:w-auto"
+            >
               Create Your Free Account
               <ArrowRight className="h-4 w-4" />
             </Link>
             <Link
-              href="#demo"
+              href="/contact"
               className="btn-outline-white w-full px-6 py-3.5 text-base sm:w-auto"
             >
               Request a Demo

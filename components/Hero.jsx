@@ -65,12 +65,12 @@ export default function Hero() {
 
             <Reveal delay={0.15}>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-                <Link href="#create" className="btn-primary px-6 py-3.5 text-base">
+                <Link href="/pricing" className="btn-primary px-6 py-3.5 text-base">
                   Create Free Account
                   <ArrowRight className="h-4 w-4" />
                 </Link>
                 <Link
-                  href="#solutions"
+                  href="/solutions"
                   className="btn-outline-navy px-6 py-3.5 text-base"
                 >
                   <PlayCircle className="h-4 w-4" />

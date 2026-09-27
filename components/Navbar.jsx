@@ -2,23 +2,28 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import Logo from './ui/Logo';
 
 const NAV_LINKS = [
-  { label: 'Home', href: '#top' },
-  { label: 'Solutions', href: '#solutions' },
-  { label: 'Tools & Models', href: '#tools' },
-  { label: 'Knowledge Hub', href: '#knowledge' },
-  { label: 'Pricing', href: '#pricing' },
-  { label: 'About', href: '#about' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Home', href: '/' },
+  { label: 'Solutions', href: '/solutions' },
+  { label: 'Tools & Models', href: '/tools' },
+  { label: 'Knowledge Hub', href: '/knowledge' },
+  { label: 'Pricing', href: '/pricing' },
+  { label: 'About', href: '/about' },
+  { label: 'Contact', href: '/contact' },
 ];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+
+  const isActive = (href) =>
+    href === '/' ? pathname === '/' : pathname.startsWith(href);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -27,7 +32,6 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  // Lock body scroll while the mobile drawer is open.
   useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : '';
     return () => {
@@ -47,13 +51,16 @@ export default function Navbar() {
         <nav className="flex h-16 items-center justify-between gap-4 lg:h-[72px]">
           <Logo />
 
-          {/* Desktop navigation */}
           <ul className="hidden items-center gap-1 lg:flex">
             {NAV_LINKS.map((link) => (
               <li key={link.label}>
                 <Link
                   href={link.href}
-                  className="rounded-lg px-3 py-2 text-sm font-medium text-ink-muted transition-colors hover:bg-navy-50 hover:text-navy"
+                  className={`rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
+                    isActive(link.href)
+                      ? 'bg-navy-50 text-navy'
+                      : 'text-ink-muted hover:bg-navy-50 hover:text-navy'
+                  }`}
                 >
                   {link.label}
                 </Link>
@@ -61,17 +68,15 @@ export default function Navbar() {
             ))}
           </ul>
 
-          {/* Desktop actions */}
           <div className="hidden items-center gap-2 lg:flex">
-            <Link href="#signin" className="btn-ghost px-4">
+            <Link href="/contact" className="btn-ghost px-4">
               Sign In
             </Link>
-            <Link href="#create" className="btn-primary">
+            <Link href="/pricing" className="btn-primary">
               Create Account
             </Link>
           </div>
 
-          {/* Mobile toggle */}
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
@@ -84,7 +89,6 @@ export default function Navbar() {
         </nav>
       </div>
 
-      {/* Mobile drawer */}
       <AnimatePresence>
         {open && (
           <motion.div
@@ -101,7 +105,11 @@ export default function Navbar() {
                     <Link
                       href={link.href}
                       onClick={() => setOpen(false)}
-                      className="block rounded-xl px-3 py-3 text-sm font-medium text-ink-muted transition-colors hover:bg-navy-50 hover:text-navy"
+                      className={`block rounded-xl px-3 py-3 text-sm font-medium transition-colors ${
+                        isActive(link.href)
+                          ? 'bg-navy-50 text-navy'
+                          : 'text-ink-muted hover:bg-navy-50 hover:text-navy'
+                      }`}
                     >
                       {link.label}
                     </Link>
@@ -110,14 +118,14 @@ export default function Navbar() {
               </ul>
               <div className="mt-4 flex flex-col gap-2 border-t border-navy/10 pt-4">
                 <Link
-                  href="#signin"
+                  href="/contact"
                   onClick={() => setOpen(false)}
                   className="btn-outline-navy w-full"
                 >
                   Sign In
                 </Link>
                 <Link
-                  href="#create"
+                  href="/pricing"
                   onClick={() => setOpen(false)}
                   className="btn-primary w-full"
                 >

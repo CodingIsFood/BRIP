@@ -3,11 +3,18 @@ import { Linkedin, Youtube, Twitter } from 'lucide-react';
 import Logo from './ui/Logo';
 
 const FOOTER_LINKS = [
-  { label: 'About', href: '#about' },
-  { label: 'Terms', href: '#terms' },
-  { label: 'Privacy', href: '#privacy' },
-  { label: 'Help', href: '#help' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'About', href: '/about' },
+  { label: 'Terms', href: '/terms' },
+  { label: 'Privacy', href: '/privacy' },
+  { label: 'Help', href: '/knowledge' },
+  { label: 'Contact', href: '/contact' },
+];
+
+const PLATFORM_LINKS = [
+  { label: 'Solutions', href: '/solutions' },
+  { label: 'Tools & Models', href: '/tools' },
+  { label: 'Knowledge Hub', href: '/knowledge' },
+  { label: 'Pricing', href: '/pricing' },
 ];
 
 const SOCIALS = [
@@ -36,7 +43,28 @@ export default function Footer() {
 
           {/* Links + socials */}
           <div className="flex flex-col gap-8 sm:flex-row sm:gap-16">
-            <nav aria-label="Footer">
+            <nav aria-label="Platform">
+              <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-white/40">
+                Platform
+              </p>
+              <ul className="flex flex-wrap gap-x-8 gap-y-3 sm:flex-col sm:gap-y-3">
+                {PLATFORM_LINKS.map((link) => (
+                  <li key={link.label}>
+                    <Link
+                      href={link.href}
+                      className="text-sm font-medium text-white/70 transition-colors hover:text-white"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+
+            <nav aria-label="Company">
+              <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-white/40">
+                Company
+              </p>
               <ul className="flex flex-wrap gap-x-8 gap-y-3 sm:flex-col sm:gap-y-3">
                 {FOOTER_LINKS.map((link) => (
                   <li key={link.label}>
@@ -81,3 +109,4 @@ export default function Footer() {
     </footer>
   );
 }
+
